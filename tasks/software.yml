@@ -1,0 +1,16 @@
+---
+
+- name: Update system
+  apt:
+    autoclean: yes
+    autoremove: yes
+    update_cache: yes
+    upgrade: full
+
+- name: Install required system software
+  apt:
+    name:
+    - git
+    - python3
+    - cec-utils
+    state: present

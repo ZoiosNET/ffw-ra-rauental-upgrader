@@ -1,0 +1,10 @@
+---
+
+- name: import updater.yml
+  import_tasks: updater.yml
+
+- name: import software
+  import_tasks: software.yml
+
+- name: import display-controller
+  import_tasks: display-controller.yml

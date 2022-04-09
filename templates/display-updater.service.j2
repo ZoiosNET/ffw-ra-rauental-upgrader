@@ -1,0 +1,15 @@
+[Unit]
+Description=Update Alarmdisplay Software
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=bash /opt/ffw-ra-rauental-updater/update.sh
+WorkingDirectory=/opt/ffw-ra-rauental-updater/
+Environment=ApiKey={{ api_key }}
+Environment=TelegramChatId={{ telegram_chat_id }}
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
