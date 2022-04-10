@@ -7,9 +7,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=TODO
+ExecStart=python divera_script.py
 WorkingDirectory=/opt/display-controller
-Restart=TODO
+Restart=always
 User=root
 Group=root
 

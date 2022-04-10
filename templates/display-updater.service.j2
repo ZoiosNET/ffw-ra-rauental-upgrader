@@ -6,9 +6,7 @@ After=multi-user.target
 Type=idle
 ExecStart=bash /opt/ffw-ra-rauental-updater/update.sh
 WorkingDirectory=/opt/ffw-ra-rauental-updater/
-Environment=ApiKey={{ api_key }}
-Environment=TelegramBotToken={{ telegram_bot_token }}
-Environment=TelegramChatId={{ telegram_chat_id }}
+EnvironmentFile=/etc/environment
 User=root
 Group=root
 
