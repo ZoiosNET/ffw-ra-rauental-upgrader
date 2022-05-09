@@ -19,4 +19,4 @@
     name: "daily reboot"
     minute: "*/5"
     hour: "*"
-    job: "reboot"
+    job: "/sbin/shutdown -r now"
