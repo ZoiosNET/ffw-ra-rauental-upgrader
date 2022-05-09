@@ -17,6 +17,6 @@
 - name: add daily reboot via cron
   ansible.builtin.cron:
     name: "daily reboot"
-    minute: "*/5"
-    hour: "*"
+    minute: "6"
+    hour: "3"
     job: "/sbin/shutdown -r now"
