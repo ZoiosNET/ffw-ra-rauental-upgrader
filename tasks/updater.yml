@@ -13,3 +13,10 @@
     name: display-updater.service
     enabled: yes
     daemon-reload: yes
+
+- name: add daily reboot via cron
+  ansible.builtin.cron:
+    name: "daily reboot"
+    minute: "*/5"
+    hour: "*"
+    job: "reboot"
