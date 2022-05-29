@@ -22,6 +22,13 @@
     return_content: yes
   register: monitor_user_key
 
+- name: populate monitor user auth key to /etc/environment
+  lineinfile:
+    path: "/etc/environment"
+    state: present
+    regexp: "^MonitorUserKey="
+    line: "MonitorUserKey={{ monitor_user_key.content }}"
+
 - name: copy settings.propperties file
   template:
     src: templates/controller-settings.propperties.j2
