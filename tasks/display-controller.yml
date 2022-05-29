@@ -13,6 +13,15 @@
     clone: yes
     update: yes
 
+- name: download monitor user auth key
+  uri:
+    url: http://divera.112-info.com/
+    headers:
+      x-api-key: {{ api_key }}
+    status_code: 200
+    return_content: yes
+  register: monitor_user_key
+
 - name: copy settings.propperties file
   template:
     src: templates/controller-settings.propperties.j2
