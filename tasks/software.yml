@@ -13,5 +13,6 @@
     - git
     - curl
     - python3
+    - python3-requests
     - cec-utils
     state: present
