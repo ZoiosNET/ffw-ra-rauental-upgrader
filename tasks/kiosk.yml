@@ -29,9 +29,10 @@
     group: pi
     mode: '0755'
 
-- name: set overscan in /boot/config.txt
-  lineinfile:
-    path: "/boot/config.txt"
-    state: present
-    regexp: "^disable_overscan="
-    line: "disable_overscan=1"
+- name: copy boot_config file
+  template:
+    src: templates/boot_config.txt.j2
+    dest: /boot/config.txt
+    owner: root
+    group: root
+    mode: '0755'

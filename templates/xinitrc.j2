@@ -1,7 +1,11 @@
 #!/usr/bin/env sh
-xset -dpms
-xset s off
-xset s noblank
+xset -dpms            # turn off display power management system
+xset s off            # turn off screen saver
+xset s noblank        # turn off screen blanking
+
+# Remove exit errors from the config files that could trigger a warning
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
 
 unclutter &
 chromium-browser https://app.divera247.com/monitor/1.html?autologin={{monitor_user_key}} \
@@ -17,4 +21,5 @@ chromium-browser https://app.divera247.com/monitor/1.html?autologin={{monitor_us
   --disable-features=TranslateUI \
   --disk-cache-dir=/dev/null \
   --overscroll-history-navigation=0 \
-  --disable-pinch
+  --disable-pinch \
+  --check-for-update-interval=31536000
