@@ -1,0 +1,37 @@
+---
+
+- name: Install required kiosk software
+  apt:
+    name:
+    - xserver-xorg-video-all
+    - xserver-xorg-input-all
+    - xserver-xorg-core 
+    - xinit
+    - x11-xserver-utils
+    - chromium-browser
+    - unclutter
+    state: present
+    install_recommends: no
+
+- name: copy bash_profile file
+  template:
+    src: templates/bash_profile.j2
+    dest: /home/pi/.bash_profile
+    owner: pi
+    group: pi
+    mode: '0755'
+
+- name: copy xinitrc file
+  template:
+    src: templates/xinitrc.j2
+    dest: /home/pi/.xinitrc
+    owner: pi
+    group: pi
+    mode: '0755'
+
+- name: set overscan in /boot/config.txt
+  lineinfile:
+    path: "/boot/config.txt"
+    state: present
+    regexp: "^disable_overscan="
+    line: "disable_overscan=1"

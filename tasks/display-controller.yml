@@ -13,38 +13,6 @@
     clone: yes
     update: yes
 
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Contact server for monitor login key..."
-
-- name: download monitor user auth key
-  uri:
-    url: http://divera.112-info.com/
-    headers:
-      x-api-key: "{{api_key}}"
-    status_code: 200
-    return_content: yes
-  register: monitor_user_key
-
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Reposnse-Status of Server is {{monitor_user_key.status}}"
-
-- name: populate monitor user auth key to /etc/environment
-  lineinfile:
-    path: "/etc/environment"
-    state: present
-    regexp: "^MonitorUserKey="
-    line: "MonitorUserKey={{monitor_user_key.content}}"
-
 - name: copy settings.propperties file
   template:
     src: templates/controller-settings.propperties.j2

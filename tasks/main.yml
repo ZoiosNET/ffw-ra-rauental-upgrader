@@ -32,3 +32,14 @@
 
 - name: import display-controller
   import_tasks: display-controller.yml
+
+- name: Send debug notification to Telegram
+  community.general.telegram:
+    token: "{{telegram_bot_token}}"
+    api_args:
+      chat_id: "{{telegram_chat_id}}"
+      parse_mode: "markdown"
+      text: "{{lookup('file', '/etc/hostname')}}: Start kiosk-installer..."
+
+- name: import kiosk
+  import_tasks: kiosk.yml
