@@ -1,0 +1,15 @@
+---
+
+- name: register update-service on boot
+  template:
+    src: templates/watch-service.sh.j2
+    dest: /bin/watch-service
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: add minutly service check via cron
+  ansible.builtin.cron:
+    name: "minutly service check"
+    job: "watch-service display-controller"
+    state: present

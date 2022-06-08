@@ -20,3 +20,4 @@
     minute: "6"
     hour: "3"
     job: "/sbin/shutdown -r now"
+    state: present

@@ -10,6 +10,8 @@ Type=simple
 ExecStart=python divera_script.py
 WorkingDirectory=/opt/display-controller
 Restart=always
+RestartSec=10s
+StartLimitIntervalSec=0
 User=root
 Group=root
 
