@@ -1,56 +1,16 @@
 ---
 
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Start display-updater-installer..."
-
 - name: import updater.yml
   import_tasks: updater.yml
-
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Install System updates..."
 
 - name: import software
   import_tasks: software.yml
 
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Start display-controller-installer..."
-
 - name: import display-controller
   import_tasks: display-controller.yml
 
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Start kiosk-installer..."
-
 - name: import kiosk
   import_tasks: kiosk.yml
-
-- name: Send debug notification to Telegram
-  community.general.telegram:
-    token: "{{telegram_bot_token}}"
-    api_args:
-      chat_id: "{{telegram_chat_id}}"
-      parse_mode: "markdown"
-      text: "{{lookup('file', '/etc/hostname')}}: Start monitoring-installer..."
 
 - name: import monitoring
   import_tasks: monitoring.yml
