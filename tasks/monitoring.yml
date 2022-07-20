@@ -1,6 +1,6 @@
 ---
 
-- name: register update-service on boot
+- name: register watch-service command
   template:
     src: templates/watch-service.sh.j2
     dest: /bin/watch-service
@@ -12,4 +12,19 @@
   ansible.builtin.cron:
     name: "minutly service check"
     job: "watch-service display-controller"
+    state: present
+
+- name: register telegram-ping command
+  template:
+    src: templates/telegram-ping.sh.j2
+    dest: /bin/telegram-ping
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: add hourly telegram-ping via cron
+  ansible.builtin.cron:
+    name: "hourly telegram-ping"
+    job: "telegram-ping"
+    minute: "0"
     state: present
