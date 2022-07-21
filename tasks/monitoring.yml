@@ -25,6 +25,6 @@
 - name: add hourly telegram-ping via cron
   ansible.builtin.cron:
     name: "hourly telegram-ping"
-    job: "telegram-ping"
+    job: "/bin/bash -c \"telegram-ping\""
     minute: "0"
     state: present
