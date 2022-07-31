@@ -11,7 +11,7 @@
 - name: add minutly service check via cron
   ansible.builtin.cron:
     name: "minutly service check"
-    job: "watch-service display-controller"
+    job: "timeout 50 watch-service display-controller"
     state: present
 
 - name: register telegram-ping command
@@ -25,6 +25,6 @@
 - name: add hourly telegram-ping via cron
   ansible.builtin.cron:
     name: "hourly telegram-ping"
-    job: "/bin/bash -c \"telegram-ping\""
+    job: "timeout 30 /bin/bash -c \"telegram-ping\""
     minute: "0"
     state: present
