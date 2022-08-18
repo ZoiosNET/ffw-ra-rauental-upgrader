@@ -8,7 +8,7 @@
     group: root
     mode: '0755'
 
-- name: add minutly service check via cron
+- name: inutly service check via cron
   ansible.builtin.cron:
     name: "minutly service check"
     job: "timeout 50 watch-service display-controller"
@@ -22,9 +22,9 @@
     group: root
     mode: '0755'
 
-- name: add hourly telegram-ping via cron
+- name: hourly telegram-ping via cron
   ansible.builtin.cron:
     name: "hourly telegram-ping"
     job: "timeout 30 /bin/bash -c \"telegram-ping\""
     minute: "0"
-    state: present
+    state: absent
