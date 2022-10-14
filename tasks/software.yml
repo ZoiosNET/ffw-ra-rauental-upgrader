@@ -17,8 +17,3 @@
     - python3-serial
     - cec-utils
     state: present
-    
-- name: Install python package
-  ansible.builtin.pip:
-    name:
-      - playsound
