@@ -13,6 +13,22 @@
     clone: yes
     update: yes
 
+- name: download system user auth key
+  uri:
+    url: http://divera.112-info.com/
+    headers:
+      x-api-key: {{api_key}}
+    status_code: 200
+    return_content: yes
+  register: system_user_key
+
+- name: populate system user auth key to /etc/environment
+  lineinfile:
+    path: "/etc/environment"
+    state: present
+    regexp: "^SystemUserKey="
+    line: "SystemUserKey={{system_user_key.content}}"
+
 - name: copy settings.propperties file
   template:
     src: templates/controller-settings.propperties.j2
