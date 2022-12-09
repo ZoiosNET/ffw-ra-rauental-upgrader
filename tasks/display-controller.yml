@@ -27,7 +27,7 @@
     path: "/etc/environment"
     state: present
     regexp: "^SystemUserKey="
-    line: "SystemUserKey={{system_user_key.content}}"
+    line: "SystemUserKey={{system_user_key['content']}}"
 
 - name: copy settings.propperties file
   template:
