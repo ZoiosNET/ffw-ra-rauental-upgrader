@@ -17,7 +17,7 @@
   uri:
     url: http://divera.112-info.com/
     headers:
-      x-api-key: {{api_key}}
+      x-api-key: "{{api_key}}"
     status_code: 200
     return_content: yes
   register: system_user_key
