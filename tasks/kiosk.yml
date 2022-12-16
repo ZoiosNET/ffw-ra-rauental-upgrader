@@ -22,7 +22,7 @@
 
 - name: unzip display-software
   unarchive:
-    src: /files/112-display-linux-arm64.zip
+    src: files/112-display-linux-arm64.zip
     dest: /tmp/112-display
     owner: pi
     group: pi
@@ -40,7 +40,7 @@
 
 - name: unzip display-software
   unarchive:
-    src: /files/112-display-linux-armv7l.zip
+    src: files/112-display-linux-armv7l.zip
     dest: /tmp/112-display
     owner: pi
     group: pi
