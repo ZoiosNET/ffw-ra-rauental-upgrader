@@ -28,16 +28,16 @@
     group: pi
     mode: '0755'
 
-- name: unzip display-software amd64
+- name: unzip display-software arm64
   unarchive:
-    src: files/112-display-linux-arm64.zip
+    src: https://github.com/ZoiosNET/ffw-ra-rauental-upgrader/raw/main/files/112-display-linux-arm64.zip
     dest: /tmp/112-display
     owner: pi
     group: pi
     mode: '0755'
   when: ansible_architecture == "aarch64"
 
-- name: copy display-software amd64
+- name: copy display-software arm64
   copy:
     src: /tmp/112-display/112-display-linux-arm64/
     dest: /home/pi/112-display
@@ -48,7 +48,7 @@
 
 - name: unzip display-software armv7l
   unarchive:
-    src: files/112-display-linux-armv7l.zip
+    src: https://github.com/ZoiosNET/ffw-ra-rauental-upgrader/raw/main/files/112-display-linux-armv7l.zip
     dest: /tmp/112-display
     owner: pi
     group: pi
