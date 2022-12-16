@@ -28,7 +28,7 @@
     group: pi
     mode: '0755'
 
-- name: unzip display-software
+- name: unzip display-software amd64
   unarchive:
     src: files/112-display-linux-arm64.zip
     dest: /tmp/112-display
@@ -37,7 +37,7 @@
     mode: '0755'
   when: ansible_architecture == "aarch64"
 
-- name: copy display-software
+- name: copy display-software amd64
   copy:
     src: /tmp/112-display/112-display-linux-arm64/
     dest: /home/pi/112-display
@@ -46,7 +46,7 @@
     mode: '0755'
   when: ansible_architecture == "aarch64"
 
-- name: unzip display-software
+- name: unzip display-software armv7l
   unarchive:
     src: files/112-display-linux-armv7l.zip
     dest: /tmp/112-display
@@ -55,7 +55,7 @@
     mode: '0755'
   when: ansible_architecture == "armv7l"
 
-- name: copy display-software
+- name: copy display-software armv7l
   copy:
     src: /tmp/112-display/112-display-linux-armv7l/
     dest: /home/pi/112-display
