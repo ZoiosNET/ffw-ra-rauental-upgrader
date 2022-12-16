@@ -66,6 +66,14 @@
     mode: '0755'
   when: ansible_architecture == "armv7l"
 
+- name: create config dir
+  ansible.builtin.file:
+    path: /tmp/112-display/config
+    state: directory
+    owner: pi
+    group: pi
+    mode: '0755'
+
 - name: copy settings.json file
   template:
     src: templates/112-display-settings.json.j2
