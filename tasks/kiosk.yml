@@ -20,6 +20,14 @@
     state: present
     install_recommends: yes
 
+- name: create tmp dir for 112-display
+  ansible.builtin.file:
+    path: /tmp/112-display
+    state: directory
+    owner: pi
+    group: pi
+    mode: '0755'
+
 - name: unzip display-software
   unarchive:
     src: files/112-display-linux-arm64.zip
