@@ -21,7 +21,7 @@
     install_recommends: yes
 
 - name: create tmp dir for 112-display
-  ansible.builtin.file:
+  file:
     path: /tmp/112-display
     state: directory
     owner: pi
@@ -67,8 +67,8 @@
   when: ansible_architecture == "armv7l"
 
 - name: create config dir
-  ansible.builtin.file:
-    path: /tmp/112-display/config
+  file:
+    path: /home/pi/112-display/config
     state: directory
     owner: pi
     group: pi
