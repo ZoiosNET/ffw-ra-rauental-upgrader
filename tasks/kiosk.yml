@@ -1,6 +1,6 @@
 ---
 
-- name: Install required kiosk software
+- name: Install required software for kiosk
   apt:
     name:
     - xserver-xorg-video-all
@@ -8,10 +8,61 @@
     - xserver-xorg-core 
     - xinit
     - x11-xserver-utils
-    - chromium-browser
     - unclutter
     state: present
     install_recommends: no
+
+- name: Install required software for chromium
+  apt:
+    name:
+    - chromium-browser
+    - libasound2
+    state: present
+    install_recommends: yes
+
+- name: unzip display-software
+  unarchive:
+    src: /files/112-display-linux-arm64.zip
+    dest: /tmp/112-display
+    owner: pi
+    group: pi
+    mode: '0755'
+  when: ansible_architecture == "aarch64"
+
+- name: copy display-software
+  copy:
+    src: /tmp/112-display/112-display-linux-arm64/
+    dest: /home/pi/112-display
+    owner: pi
+    group: pi
+    mode: '0755'
+  when: ansible_architecture == "aarch64"
+
+- name: unzip display-software
+  unarchive:
+    src: /files/112-display-linux-armv7l.zip
+    dest: /tmp/112-display
+    owner: pi
+    group: pi
+    mode: '0755'
+  when: ansible_architecture == "armv7l"
+
+- name: copy display-software
+  copy:
+    src: /tmp/112-display/112-display-linux-armv7l/
+    dest: /home/pi/112-display
+    owner: pi
+    group: pi
+    mode: '0755'
+  when: ansible_architecture == "armv7l"
+
+- name: copy settings.json file
+  template:
+    src: templates/112-display-settings.json.j2
+    dest: /home/pi/112-display/config/settings.json
+    owner: pi
+    group: pi
+    mode: '0644'
 
 - name: copy bash_profile file
   template:

@@ -12,6 +12,8 @@
     name:
     - git
     - curl
+    - unzip
+    - zipinfo
     - python3
     - python3-requests
     - python3-serial
