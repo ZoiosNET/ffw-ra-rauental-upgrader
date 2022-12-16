@@ -68,7 +68,7 @@
 
 - name: create config dir
   file:
-    path: /home/pi/112-display/config
+    path: /home/pi/config
     state: directory
     owner: pi
     group: pi
@@ -77,7 +77,7 @@
 - name: copy settings.json file
   template:
     src: templates/112-display-settings.json.j2
-    dest: /home/pi/112-display/config/settings.json
+    dest: /home/pi/config/settings.json
     owner: pi
     group: pi
     mode: '0644'
