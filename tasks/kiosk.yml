@@ -28,6 +28,10 @@
     group: pi
     mode: '0755'
 
+- name: get deb architecture
+  shell: dpkg --print-architecture
+  register: deb_architecture
+
 - name: unzip display-software arm64
   unarchive:
     src: files/112-display-linux-arm64.zip
@@ -35,7 +39,7 @@
     owner: pi
     group: pi
     mode: '0755'
-  when: ansible_architecture == "aarch64"
+  when: deb_architecture.stdout == "arm64"
 
 - name: copy display-software arm64
   copy:
@@ -44,7 +48,7 @@
     owner: pi
     group: pi
     mode: '0755'
-  when: ansible_architecture == "aarch64"
+  when: deb_architecture.stdout == "arm64"
 
 - name: unzip display-software armv7l
   unarchive:
@@ -53,7 +57,7 @@
     owner: pi
     group: pi
     mode: '0755'
-  when: ansible_architecture == "armv7l"
+  when: deb_architecture.stdout == "armhf"
 
 - name: copy display-software armv7l
   copy:
@@ -62,7 +66,7 @@
     owner: pi
     group: pi
     mode: '0755'
-  when: ansible_architecture == "armv7l"
+  when: deb_architecture.stdout == "armhf"
 
 - name: create config dir
   file:

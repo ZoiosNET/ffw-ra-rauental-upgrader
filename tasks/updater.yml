@@ -21,3 +21,11 @@
     hour: "3"
     job: "/sbin/shutdown -r now"
     state: present
+
+- name: add second daily reboot via cron for update
+  ansible.builtin.cron:
+    name: "daily reboot for update"
+    minute: "6"
+    hour: "4"
+    job: "/sbin/shutdown -r now"
+    state: present
