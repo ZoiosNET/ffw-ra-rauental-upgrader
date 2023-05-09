@@ -6,11 +6,12 @@
     - xserver-xorg-video-all
     - xserver-xorg-input-all
     - xserver-xorg-core 
+    - xorg
     - xinit
     - x11-xserver-utils
     - unclutter
     state: present
-    install_recommends: no
+    #install_recommends: no
 
 - name: Install required software for chromium
   apt:
