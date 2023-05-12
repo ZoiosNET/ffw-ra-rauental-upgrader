@@ -11,7 +11,6 @@
     - x11-xserver-utils
     - unclutter
     state: present
-    #install_recommends: no
 
 - name: Install required software for chromium
   apt:
@@ -108,3 +107,10 @@
     owner: root
     group: root
     mode: '0755'
+
+- name: change permissions of Xauthority
+  file:
+    path: /home/pi/.Xauthority
+    owner: pi
+    group: pi
+    mode: '0600'

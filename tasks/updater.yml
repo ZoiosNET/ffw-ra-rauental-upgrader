@@ -28,7 +28,7 @@
     minute: "2"
     hour: "4"
     job: "rm /home/pi/.Xauthority"
-    state: present
+    state: absent
 
 - name: add second daily reboot via cron for update
   ansible.builtin.cron:
