@@ -1,6 +1,13 @@
 ---
 
-- name: Update system
+- name: dist-upgrade system
+  apt:
+    autoclean: yes
+    autoremove: yes
+    update_cache: yes
+    upgrade: dist
+
+- name: full-upgrade system
   apt:
     autoclean: yes
     autoremove: yes
@@ -11,6 +18,7 @@
   apt:
     name:
     - git
+    - git-lfs
     - curl
     - unzip
     - python3
