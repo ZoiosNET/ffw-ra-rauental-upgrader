@@ -22,14 +22,6 @@
     job: "/sbin/shutdown -r now"
     state: present
 
-- name: add daily Xauthority removal via cron
-  ansible.builtin.cron:
-    name: "remove Xauthority to fix xinit"
-    minute: "2"
-    hour: "4"
-    job: "rm /home/pi/.Xauthority"
-    state: absent
-
 - name: add second daily reboot via cron for update
   ansible.builtin.cron:
     name: "daily reboot for update"
