@@ -28,4 +28,49 @@
     minute: "6"
     hour: "4"
     job: "/sbin/shutdown -r now"
+    state: absent
+
+- name: reboot for rpi-ra-rauental
+  ansible.builtin.cron:
+    name: "daily reboot rauental"
+    minute: "1"
+    hour: "4"
+    job: "/sbin/shutdown -r now"
     state: present
+  when: "{{lookup('file', '/etc/hostname')}}" == "rpi-ra-rauental"
+  
+- name: reboot for rpi-ra-plittersdorf
+  ansible.builtin.cron:
+    name: "daily reboot plittersdorf"
+    minute: "31"
+    hour: "4"
+    job: "/sbin/shutdown -r now"
+    state: present
+  when: "{{lookup('file', '/etc/hostname')}}" == "rpi-ra-plittersdorf"
+  
+- name: reboot for rpi-ra-ottersdorf
+  ansible.builtin.cron:
+    name: "daily reboot ottersdorf"
+    minute: "1"
+    hour: "5"
+    job: "/sbin/shutdown -r now"
+    state: present
+  when: "{{lookup('file', '/etc/hostname')}}" == "rpi-ra-ottersdorf"
+  
+- name: reboot for rpi-ra-wintersdorf
+  ansible.builtin.cron:
+    name: "daily reboot wintersdorf"
+    minute: "31"
+    hour: "5"
+    job: "/sbin/shutdown -r now"
+    state: present
+  when: "{{lookup('file', '/etc/hostname')}}" == "rpi-ra-wintersdorf"
+
+- name: reboot for rpi-ra-niederbuehl
+  ansible.builtin.cron:
+    name: "daily reboot niederbuehl"
+    minute: "1"
+    hour: "6"
+    job: "/sbin/shutdown -r now"
+    state: present
+  when: "{{lookup('file', '/etc/hostname')}}" == "rpi-ra-niederbuehl"
